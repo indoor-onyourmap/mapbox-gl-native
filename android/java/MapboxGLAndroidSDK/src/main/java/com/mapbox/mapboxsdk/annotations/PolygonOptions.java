@@ -6,14 +6,14 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PolygonOptions extends MultiPointOptions {
+public final class PolygonOptions extends MultiPointOptions {
 
     public PolygonOptions() {
         annotation = new Polygon();
     }
 
     public PolygonOptions add(LatLng point) {
-        ((MultiPoint)annotation).points.add(point);
+        ((MultiPoint)annotation).addPoint(point);
         return this;
     }
 
@@ -43,7 +43,7 @@ public class PolygonOptions extends MultiPointOptions {
         for (LatLng point : points) {
             hole.add(point);
         }
-        ((Polygon)annotation).holes.add(hole);
+        ((Polygon)annotation).addHole(hole);
         return this;
     }
 
@@ -54,12 +54,12 @@ public class PolygonOptions extends MultiPointOptions {
      * @return PolygonOptions - the options object
      */
     public PolygonOptions fillColor(int color) {
-        ((Polygon)annotation).fillColor = color;
+        ((Polygon)annotation).setFillColor(color);
         return this;
     }
 
     public int getFillColor() {
-        return ((Polygon)annotation).fillColor;
+        return ((Polygon)annotation).getFillColor();
     }
 
     /**
@@ -69,7 +69,7 @@ public class PolygonOptions extends MultiPointOptions {
      * @return a list of lists of points for cutting holes
      */
     public List<List<LatLng>> getHoles() {
-        return ((Polygon)annotation).holes;
+        return ((Polygon)annotation).getHoles();
     }
 
     public Polygon getPolygon() {
@@ -77,7 +77,7 @@ public class PolygonOptions extends MultiPointOptions {
     }
 
     public int getStrokeColor() {
-        return ((Polygon)annotation).strokeColor;
+        return ((Polygon)annotation).getStrokeColor();
     }
 
     /**
@@ -87,7 +87,7 @@ public class PolygonOptions extends MultiPointOptions {
      * @return stroke width as float
      */
     public float getStrokeWidth() {
-        return ((Polygon)annotation).strokeWidth;
+        return ((Polygon)annotation).getStrokeWidth();
     }
 
     /**
@@ -97,7 +97,7 @@ public class PolygonOptions extends MultiPointOptions {
      * @return PolygonOptions - the options object
      */
     public PolygonOptions strokeColor(int color) {
-        ((Polygon)annotation).strokeColor = color;
+        ((Polygon)annotation).setStrokeColor(color);
         return this;
     }
 
@@ -108,12 +108,12 @@ public class PolygonOptions extends MultiPointOptions {
      * @return stroke width as float
      */
     public PolygonOptions strokeWidth(float width) {
-        ((Polygon)annotation).strokeWidth = width;
+        ((Polygon)annotation).setStrokeWidth(width);
         return this;
     }
 
     public PolygonOptions visible(boolean visible) {
-        annotation.visible = visible;
+        annotation.setVisible(visible);
         return this;
     }
 

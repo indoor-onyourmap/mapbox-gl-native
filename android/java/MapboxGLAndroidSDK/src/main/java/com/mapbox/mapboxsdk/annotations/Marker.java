@@ -7,9 +7,8 @@ import android.view.View;
 import com.mapbox.mapboxsdk.R;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.views.InfoWindow;
-import com.mapbox.mapboxsdk.views.MapView;
 
-public class Marker extends Annotation {
+public final class Marker extends Annotation {
 
     private float anchorU;
     private float anchorV;
@@ -17,19 +16,18 @@ public class Marker extends Annotation {
     private boolean flat;
     private float infoWindowAnchorU;
     private float infoWindowAnchorV;
-    LatLng position;
+    LatLng position; // not private due to JNI
     private float rotation;
     private String snippet;
-    String sprite = "default_marker";
+    String sprite = "default_marker"; // not private due to JNI
     private String title;
     private InfoWindow infoWindow = null;
-
     private boolean infoWindowShown = false;
 
     /**
      * Constructor
      */
-    public Marker() {
+    Marker() {
         super();
     }
 
@@ -47,10 +45,6 @@ public class Marker extends Annotation {
         double otherLat = otherPosition.getLatitude();
         double otherLng = otherPosition.getLongitude();
         return (lat == otherLat && otherLng == lng);
-    }
-
-    public float getAlpha() {
-        return alpha;
     }
 
     public Point getAnchor() {
@@ -108,33 +102,33 @@ public class Marker extends Annotation {
         return infoWindowShown;
     }
 
-    public void setAnchor(float u, float v) {
+    void setAnchor(float u, float v) {
         this.anchorU = u;
         this.anchorV = v;
     }
 
-    public void setDraggable(boolean draggable) {
+    void setDraggable(boolean draggable) {
         this.draggable = draggable;
     }
 
-    public void setFlat(boolean flat) {
+    void setFlat(boolean flat) {
         this.flat = flat;
     }
 
-    public void setInfoWindowAnchor(float u, float v) {
+    void setInfoWindowAnchor(float u, float v) {
         infoWindowAnchorU = u;
         infoWindowAnchorV = v;
     }
 
-    public void setPosition(LatLng latlng) {
+    void setPosition(LatLng latlng) {
         this.position = position;
     }
 
-    public void setRotation(float rotation) {
+    void setRotation(float rotation) {
         this.rotation = rotation;
     }
 
-    public void setSnippet(String snippet) {
+    void setSnippet(String snippet) {
         this.snippet = snippet;
     }
 
@@ -148,7 +142,7 @@ public class Marker extends Annotation {
      *
      * @param sprite The name of the sprite.
      */
-    public void setSprite(@Nullable String sprite) {
+    void setSprite(@Nullable String sprite) {
         if (!TextUtils.isEmpty(sprite)) {
             this.sprite = sprite;
         }
@@ -158,7 +152,7 @@ public class Marker extends Annotation {
         return sprite;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
@@ -191,7 +185,7 @@ public class Marker extends Annotation {
      * By default the InfoWindow will close on touch.
      * @param listener Custom OnTouchListener
      */
-    public void setInfoWindowOnTouchListener(View.OnTouchListener  listener) {
+    void setInfoWindowOnTouchListener(View.OnTouchListener  listener) {
         if (listener == null) {
             return;
         }
@@ -210,7 +204,7 @@ public class Marker extends Annotation {
     }
 
     @Override
-    public void setVisible(boolean visible) {
+    void setVisible(boolean visible) {
         super.setVisible(visible);
         if (!visible && infoWindowShown) {
             hideInfoWindow();
@@ -224,4 +218,5 @@ public class Marker extends Annotation {
 //    void setIcon(BitmapDescriptor icon) {
 //
 //    }
+
 }

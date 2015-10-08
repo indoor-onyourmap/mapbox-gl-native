@@ -4,19 +4,20 @@ public abstract class AnnotationOptions {
 
     protected Annotation annotation;
 
-    public AnnotationOptions() {}
+    protected AnnotationOptions() {
+    }
 
     public AnnotationOptions alpha(float alpha) {
-        annotation.alpha = alpha;
+        annotation.setAlpha(alpha);
         return this;
     }
 
     public float getAlpha() {
-        return annotation.alpha;
+        return annotation.getAlpha();
     }
 
     public boolean isVisible() {
-        return annotation.visible;
+        return annotation.isVisible();
     }
 
 }

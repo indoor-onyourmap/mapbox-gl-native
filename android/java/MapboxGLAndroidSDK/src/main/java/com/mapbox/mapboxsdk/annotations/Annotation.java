@@ -12,10 +12,11 @@ public abstract class Annotation implements Comparable<Annotation> {
     protected long id = -1; // -1 unless added to a MapView
     protected MapView mapView;
 
-    float alpha = 1.0f;
-    boolean visible = true;
+    private float alpha = 1.0f;
+    private boolean visible = true;
 
-    public Annotation() {}
+    protected Annotation() {
+    }
 
     public float getAlpha() {
         return alpha;
@@ -34,19 +35,19 @@ public abstract class Annotation implements Comparable<Annotation> {
         mapView.removeAnnotation(this);
     }
 
-    public void setAlpha(float alpha) {
+    void setAlpha(float alpha) {
         this.alpha = alpha;
     }
 
-    public void setId(long id) {
+    void setId(long id) {
         this.id = id;
     }
 
-    public void setMapView(MapView mapView) {
+    void setMapView(MapView mapView) {
         this.mapView = mapView;
     }
 
-    public void setVisible(boolean visible) {
+    void setVisible(boolean visible) {
         this.visible = visible;
     }
 
@@ -56,10 +57,9 @@ public abstract class Annotation implements Comparable<Annotation> {
 //    }
 
     // TODO: Implement setZIndex of Google Maps Android API
-//    public void setZIndex(float zIndex) {
+//    void setZIndex(float zIndex) {
 //
 //    }
-
 
     @Override
     public boolean equals(Object o) {

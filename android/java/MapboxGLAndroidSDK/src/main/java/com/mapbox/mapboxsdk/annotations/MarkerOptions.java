@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
-public class MarkerOptions extends AnnotationOptions {
+public final class MarkerOptions extends AnnotationOptions {
 
     public MarkerOptions() {
         annotation = new Marker();
@@ -122,6 +122,8 @@ public class MarkerOptions extends AnnotationOptions {
 //    }
 
     // TODO: Implement this method of Google Maps Android API
-//    public void writeToParcel (Parcel out, int flags)
+//    public void writeToParcel (Parcel out, int flags) {
+//
+// }
 
 }
