@@ -261,6 +261,9 @@ IB_DESIGNABLE
     @param styleClass The style class to deactivate. */
 - (void)removeStyleClass:(NSString *)styleClass;
 
+/** JSON defining the map style. To display the default style, set this property to `nil`. */
+@property (nonatomic, null_resettable) NSString *styleJSON;
+
 #pragma mark - Annotating the Map
 
 /** @name Annotating the Map */

@@ -198,6 +198,13 @@ std::chrono::steady_clock::duration secondsAsDuration(float duration)
     return styleURLString ? [NSURL URLWithString:styleURLString] : nil;
 }
 
+- (nonnull NSString *)styleJSON
+{
+    NSString *styleJSON = @(_mbglMap->getStyleJSON().c_str()).mgl_stringOrNilIfEmpty;
+    NSAssert(styleJSON || _isTargetingInterfaceBuilder, @"Invalid style JSON string %@", styleJSON);
+    return styleJSON;
+}
+
 - (void)setStyleURL:(nullable NSURL *)styleURL
 {
     if (_isTargetingInterfaceBuilder) return;
@@ -216,6 +223,18 @@ std::chrono::steady_clock::duration secondsAsDuration(float duration)
     }
 
     _mbglMap->setStyleURL([[styleURL absoluteString] UTF8String]);
+}
+
+- (void)setStyleJSON:(NSString *)json
+{
+    if (_isTargetingInterfaceBuilder) return;
+    
+    if (!json) {
+        [self setStyleURL:nil];
+    } else {
+        _mbglMap->setStyleJSON([json UTF8String]);
+    }
+
 }
 
 - (void)commonInit
